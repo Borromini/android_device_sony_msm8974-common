@@ -108,7 +108,8 @@ endif
 
 # Power
 PRODUCT_PACKAGES += \
-    power.msm8974
+    power.msm8974 \
+    power.qcom
 
 # Recovery
 PRODUCT_PACKAGES += \
