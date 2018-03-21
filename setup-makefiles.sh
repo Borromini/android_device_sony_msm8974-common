@@ -23,9 +23,9 @@ export INITIAL_COPYRIGHT_YEAR=2014
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-CM_ROOT="$MY_DIR"/../../..
+LINEAGE_ROOT="$MY_DIR"/../../..
 
-HELPER="$CM_ROOT"/vendor/cm/build/tools/extract_utils.sh
+HELPER="$LINEAGE_ROOT"/vendor/lineage/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -33,7 +33,7 @@ fi
 . "$HELPER"
 
 # Initialize the helper for platform device
-setup_vendor "$PLATFORM_COMMON" "$VENDOR" "$CM_ROOT" true
+setup_vendor "$PLATFORM_COMMON" "$VENDOR" "$LINEAGE_ROOT" true
 
 write_headers "honami togari amami z3 z3dual z3c sirius castor castor_windy"
 
@@ -42,7 +42,7 @@ write_makefiles "$MY_DIR"/proprietary-files.txt
 write_footers
 
 # Reinitialize the helper for common device
-setup_vendor "$DEVICE_COMMON" "$VENDOR" "$CM_ROOT" true
+setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true
 
 if [ "$DEVICE_COMMON" == "rhine-common" ]; then
 write_headers "honami togari amami"
@@ -55,7 +55,7 @@ write_makefiles "$MY_DIR"/../$DEVICE_COMMON/proprietary-files.txt
 write_footers
 
 # Reinitialize the helper for device
-setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
+setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT"
 
 write_headers
 
